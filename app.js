@@ -26,6 +26,12 @@ app.use(fileUpload({
    useTempFiles: true,
    tempFileDir: "/tmp/",
 }));
+app.get("/", (req, res) => {
+   return res.json({
+       success: true, 
+       message: "Your server is running...",
+   })
+});
 app.use('/api/v1/user',userRouter);
 app.use('/api/v1/application',applicationRouter);
 app.use('/api/v1/job',jobRouter);
