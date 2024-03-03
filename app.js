@@ -17,7 +17,10 @@ config({path: "./config/config.env"});
 //    //  credentials:true,
 // }));
 app.use(
-   cors()
+   cors({
+      origin: 'http://localhost:5173',
+      credentials: true
+    })
 )
 app.use(cookieParser());
 app.use(express.json());
@@ -32,6 +35,7 @@ app.get("/", (req, res) => {
        message: "Your server is running...",
    })
 });
+
 app.use('/api/v1/user',userRouter);
 app.use('/api/v1/application',applicationRouter);
 app.use('/api/v1/job',jobRouter);
